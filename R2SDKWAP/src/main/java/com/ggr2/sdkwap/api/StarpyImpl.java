@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.core.base.utils.PL;
+import com.core.base.utils.SStringUtil;
+import com.core.base.utils.SignatureUtil;
 import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.R;
 import com.ggr2.sdkwap.R2DDialog;
 import com.ggr2.sdkwap.login.LoginType;
 import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.ggr2.sdkwap.widget.AccountLoginMainLayout;
+import com.ggr2.sdkwap.widget.AutoLoginLayout;
 import com.ggr2.sdkwap.widget.BindAccountLayout;
 import com.ggr2.sdkwap.widget.CurrentGuestLoginLayout;
 import com.ggr2.sdkwap.widget.CurrentLoginLayout;
@@ -42,10 +45,11 @@ public class StarpyImpl implements IStarpy {
         return starpy;
     }
 
-    private R2Callback r2CallbackLogin;
+    private R2LoginCallback r2LoginCallbackLogin;
+    private R2LogoutCallback r2LogoutCallback;
 
-    public R2Callback getR2CallbackLogin() {
-        return r2CallbackLogin;
+    public R2LoginCallback getR2LoginCallbackLogin() {
+        return r2LoginCallbackLogin;
     }
 
     @Override
@@ -106,19 +110,38 @@ public class StarpyImpl implements IStarpy {
 
 
     @Override
-    public void showLogin(Activity activity, R2Callback r2Callback) {
+    public void showLogin(Activity activity, R2LoginCallback r2LoginCallback) {
 
-        this.r2CallbackLogin = r2Callback;
+        PL.i("fb keyhash:" + SignatureUtil.getHashKey(activity, activity.getPackageName()));
+        PL.i("google sha1:" + SignatureUtil.getSignatureSHA1WithColon(activity, activity.getPackageName()));
+
+
+        this.r2LoginCallbackLogin = r2LoginCallback;
+
         R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
-        AccountLoginMainLayout accountLoginMainLayout = new AccountLoginMainLayout(activity);
-        accountLoginMainLayout.setR2DDialog(r2DDialog);
-        r2DDialog.setContentView(accountLoginMainLayout);
-        r2DDialog.show();
+
+        if (SStringUtil.isEmpty(StarPyUtil.getPreviousLoginType(activity))){
+            AccountLoginMainLayout accountLoginMainLayout = new AccountLoginMainLayout(activity);
+            accountLoginMainLayout.setR2DDialog(r2DDialog);
+            r2DDialog.setContentView(accountLoginMainLayout);
+            r2DDialog.show();
+        }else {
+
+            AutoLoginLayout autoLoginLayout = new AutoLoginLayout(activity);
+            autoLoginLayout.setR2DDialog(r2DDialog);
+            r2DDialog.setContentView(autoLoginLayout);
+            r2DDialog.show();
+
+        }
+
 
     }
 
     @Override
-    public void showCurrentLoginView(Activity activity) {
+    public void showCurrentLoginView(Activity activity, R2LogoutCallback r2LogoutCallback) {
+
+        this.r2LogoutCallback = r2LogoutCallback;
+
         if (StarPyUtil.isGuestLogin(activity)){
 
             R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
@@ -151,8 +174,9 @@ public class StarpyImpl implements IStarpy {
     }
 
     @Override
-    public void showUnBindView(Activity activity) {
+    public void showUnBindView(Activity activity, R2LogoutCallback r2LogoutCallback) {
 
+        this.r2LogoutCallback = r2LogoutCallback;
         if (LoginType.R2GameLoginType_GUEST.equals(StarPyUtil.getPreviousLoginType(activity))){
             ToastUtils.toast(activity,R.string.r2d_string_unbind_tips);
             return;
@@ -168,6 +192,12 @@ public class StarpyImpl implements IStarpy {
     public void logout(Activity activity){
 
         R2SDKAPI.getInstance(activity).logout(activity);
+        StarPyUtil.savePreviousLoginType(activity,"");
+        StarPyUtil.saveSdkLoginData(activity,"");
+
+        if (this.r2LogoutCallback == null){
+            this.r2LogoutCallback.onSuccess();
+        }
 
     }
 }

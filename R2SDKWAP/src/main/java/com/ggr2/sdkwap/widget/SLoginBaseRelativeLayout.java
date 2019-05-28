@@ -61,6 +61,9 @@ public abstract class SLoginBaseRelativeLayout extends SBaseRelativeLayout {
         Localization.updateSGameLanguage(getTheContext());
 
         inflater = LayoutInflater.from(context);
+
+        closeImageView = new ImageView(activity);
+
         View contentView = createView(this.context, inflater);
 
         if (contentView != null) {
@@ -75,7 +78,7 @@ public abstract class SLoginBaseRelativeLayout extends SBaseRelativeLayout {
 //            relativeLayout.addView(contentView,webviewLp);
         }
 
-        closeImageView = new ImageView(activity);
+
         RelativeLayout.LayoutParams colseLp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         colseLp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         this.addView(closeImageView,colseLp);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">R2SDKWAP</string>
+    <string name="app_name">R2SDKDEMO</string>
 
     <string name="r2_game_id"></string>
 
@@ -29,5 +29,6 @@
     <string name="r2d_string_unbind_cancel">解除绑定取消</string>
     <string name="r2d_string_unbind_fail">解除绑定失败</string>
     <string name="r2d_string_unbind_tips">Facebook、Google登录方式才能进行解除绑定</string>
+    <string name="r2d_string_auto_logining">自动登入中...</string>
 
 </resources>

@@ -62,6 +62,7 @@ public class UnbindAccountLayout extends SLoginBaseRelativeLayout {
             public void onClick(View v) {
 
                 StarpyImpl.getInstance().logout(activity);
+                r2DDialog.dismiss();
             }
         });
         unbindView.setOnClickListener(new OnClickListener() {

@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    signingConfigs {
+        brmmdsign {
+            keyAlias 'brmmd'
+            keyPassword 'brmmd666888'
+            storeFile file('../keystore/brmmd-keystore.jks')
+            storePassword 'brmmd666888'
+        }
+    }
+
     compileSdkVersion 28
 //    defaultConfig {
 //        applicationId "com.ggr2.sdk.demo"
@@ -27,7 +37,10 @@ android {
 
             resValue "string", "r2_game_id", "482"
             resValue "string", "fb_app_id", "1018908544961672"
+//            resValue "string", "fb_app_id", "134211963880586"
             flavorDimensions "1"
+
+            signingConfig signingConfigs.brmmdsign
         }
     }
 

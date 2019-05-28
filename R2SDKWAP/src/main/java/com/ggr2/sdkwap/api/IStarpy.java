@@ -11,9 +11,9 @@ import com.ggr2.sdkwap.base.IGameLifeCycle;
 public interface IStarpy extends IGameLifeCycle {
 
     public void initSDK(Activity activity);
-    public void showLogin(Activity activity, R2Callback r2Callback);
-    public void showCurrentLoginView(Activity activity);
+    public void showLogin(Activity activity, R2LoginCallback r2LoginCallback);
+    public void showCurrentLoginView(Activity activity, R2LogoutCallback r2LogoutCallback);
     public void showBindView(Activity activity);
-    public void showUnBindView(Activity activity);
+    public void showUnBindView(Activity activity, R2LogoutCallback r2LogoutCallback);
 
 }

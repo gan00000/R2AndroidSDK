@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.core.base.utils.PL;
+import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.api.IStarpy;
-import com.ggr2.sdkwap.api.R2Callback;
+import com.ggr2.sdkwap.api.R2LoginCallback;
+import com.ggr2.sdkwap.api.R2LogoutCallback;
 import com.ggr2.sdkwap.api.StarpyFactory;
 import com.r2games.sdk.entity.response.ResponseLoginData;
 
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                iStarpy.showLogin(activity, new R2Callback() {
+                iStarpy.showLogin(activity, new R2LoginCallback() {
                     @Override
                     public void onSuccess(ResponseLoginData loginData) {
 
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                         boolean linked_google_act = loginData.isBoundToGoogleAccount();
                         boolean linked_google_games = loginData.isBoundToGoogleGamesAccount();
 
+                        ToastUtils.toast(activity,"登录成功  r2Uid:" + r2Uid);
+
                     }
                 });
             }
@@ -83,7 +87,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                iStarpy.showCurrentLoginView(activity);
+                iStarpy.showCurrentLoginView(activity, new R2LogoutCallback() {
+                    @Override
+                    public void onSuccess() {
+                        ToastUtils.toast(activity,"退出游戏");
+                    }
+                });
 
             }
         });
@@ -99,7 +108,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.unbindact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iStarpy.showUnBindView(activity);
+                iStarpy.showUnBindView(activity, new R2LogoutCallback() {
+                    @Override
+                    public void onSuccess() {
+                        ToastUtils.toast(activity,"退出游戏");
+                    }
+                });
             }
         });
 
