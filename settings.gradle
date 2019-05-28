@@ -1,0 +1,1 @@
+include ':app', ':R2SDKWAP', ':star-core'

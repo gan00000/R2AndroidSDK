@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">R2SDKWAP</string>
+
+    <string name="r2_game_id"></string>
+
+    <string name="google_games_app_id">981052987434</string>
+    <string name="fb_app_id">981052987434</string>
+
+    <string name="r2d_string_guest_warning_tips">进入游戏后，建议绑定账号。\n  避免游戏资料丢失...</string>
+
+    <string name="r2d_string_bind_account">绑定账号</string>
+
+</resources>

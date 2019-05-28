@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <LinearLayout
+        android:layout_width="@dimen/px_900"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_80"
+            android:background="@color/e_75787c"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/r2_login_logo"
+                android:padding="@dimen/px_5"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/px_20"
+            android:paddingRight="@dimen/px_20"
+            android:orientation="vertical"
+            android:background="@color/e_bebebf"
+            >
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_70"
+                android:layout_marginTop="@dimen/px_50"
+                android:gravity="center"
+               >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/r2d_string_bind_account"
+                    android:textSize="@dimen/sp_24"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_70"
+                android:layout_marginTop="@dimen/px_40"
+                android:gravity="center"
+                android:id="@+id/r2d_fb_login_btn"
+                android:background="@drawable/r2d_bule_rectangle_bg">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/px_5"
+                    android:src="@drawable/r2d_fb_banner"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_70"
+                android:layout_marginTop="@dimen/px_30"
+                android:layout_marginBottom="@dimen/px_40"
+                android:gravity="center"
+                android:id="@+id/r2d_google_login_btn"
+                android:background="@drawable/r2d_white_rectangle_bg">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/px_5"
+                    android:src="@drawable/r2d_fb_banner"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
