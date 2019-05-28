@@ -26,6 +26,10 @@ public class JsonUtil {
         return null;
     }
 
+    public static boolean getBooleanValueByKey(Context context, String jsonStr, String key) {
+        return  getBooleanValueByKey(context, jsonStr, key,false);
+    }
+
     public static String getValueByKey(Context context, String jsonStr, String key) {
         return  getValueByKey(context, jsonStr, key,"");
     }
@@ -41,6 +45,21 @@ public class JsonUtil {
                     if (!TextUtils.isEmpty(value)) {
                         return value;
                     }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return defaultValue;
+    }
+
+    public static boolean getBooleanValueByKey(Context context, String jsonStr, String key, boolean defaultValue) {
+
+        if (!TextUtils.isEmpty(jsonStr)) {
+            try {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                if (jsonObject.has(key)) {
+                    return jsonObject.optBoolean(key, defaultValue);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

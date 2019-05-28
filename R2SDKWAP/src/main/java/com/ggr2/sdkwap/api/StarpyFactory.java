@@ -8,7 +8,7 @@ public class StarpyFactory {
 
     public static IStarpy create(){
 
-        return new StarpyImpl();
+        return StarpyImpl.getInstance();
     }
 
 }

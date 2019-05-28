@@ -53,7 +53,10 @@ public class CurrentGuestLoginLayout extends SLoginBaseRelativeLayout {
         logoutView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                GuestLogoutTipsLayout logoutTipsLayout = new GuestLogoutTipsLayout(activity);
+                logoutTipsLayout.setR2DDialog(r2DDialog);
+                r2DDialog.setContentView(logoutTipsLayout);
 
             }
         });
@@ -61,6 +64,9 @@ public class CurrentGuestLoginLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
+                BindAccountLayout bindAccountLayout = new BindAccountLayout(activity);
+                bindAccountLayout.setR2DDialog(r2DDialog);
+                r2DDialog.setContentView(bindAccountLayout);
 
             }
         });

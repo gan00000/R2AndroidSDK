@@ -28,22 +28,22 @@
                     android:text="登陆" />
 
                 <Button
-                    android:id="@+id/demo_pay"
+                    android:id="@+id/currentLoginType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="当前登录方式" />
 
                 <Button
-                    android:id="@+id/demo_pay_google"
+                    android:id="@+id/bindact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="绑定账号" />
 
                 <Button
-                    android:id="@+id/demo_cs"
+                    android:id="@+id/unbindact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="客服" />
+                    android:text="解除绑定" />
 
                 <Button
                     android:id="@+id/demo_share"

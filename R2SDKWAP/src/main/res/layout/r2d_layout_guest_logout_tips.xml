@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <LinearLayout
+        android:layout_width="@dimen/px_900"
+        android:layout_height="@dimen/px_450"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_80"
+            android:background="@color/e_75787c"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/r2_login_logo"
+                android:padding="@dimen/px_5"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/px_20"
+            android:paddingRight="@dimen/px_20"
+            android:orientation="vertical"
+            android:background="@color/e_bebebf"
+            android:gravity="center"
+
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/r2d_guest_warning"
+                    android:padding="@dimen/px_5"
+                    />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px_100"
+                android:layout_marginTop="@dimen/px_15"
+                android:gravity="center_horizontal"
+                android:text="@string/r2d_string_guest_logout_warning_tips"
+                android:textSize="@dimen/sp_24"
+                android:textColor="@android:color/black"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/px_60"
+                    android:paddingRight="@dimen/px_60"
+                    android:paddingBottom="@dimen/px_14"
+                    android:paddingTop="@dimen/px_14"
+                    android:gravity="center_horizontal"
+                    android:text="@string/r2d_string_ok"
+                    android:textSize="@dimen/sp_24"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/r2d_rectangle_button_bg"
+                    android:id="@+id/guest_tips_ok"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/px_60"
+                    android:paddingLeft="@dimen/px_60"
+                    android:paddingRight="@dimen/px_60"
+                    android:paddingBottom="@dimen/px_14"
+                    android:paddingTop="@dimen/px_14"
+                    android:gravity="center_horizontal"
+                    android:text="@string/r2d_string_cancel"
+                    android:textSize="@dimen/sp_24"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/r2d_rectangle_button_bg"
+                    android:id="@+id/guest_tips_cancel"
+                    />
+
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

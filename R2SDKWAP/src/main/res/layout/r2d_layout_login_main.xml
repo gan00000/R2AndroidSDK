@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/px_5"
-                    android:src="@drawable/r2d_fb_banner"/>
+                    android:src="@drawable/r2d_fb_signup"/>
 
             </LinearLayout>
 
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/px_5"
-                    android:src="@drawable/r2d_fb_banner"/>
+                    android:src="@drawable/r2d_gg_signup"/>
 
             </LinearLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/px_5"
-                    android:src="@drawable/r2d_fb_banner"/>
+                    android:src="@drawable/r2d_guest_login"/>
 
             </LinearLayout>
 

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.ggr2.sdkwap.R;
+import com.ggr2.sdkwap.R2DDialog;
 import com.ggr2.sdkwap.utils.Localization;
 
 /**
@@ -23,7 +24,11 @@ public abstract class SLoginBaseRelativeLayout extends SBaseRelativeLayout {
     Activity activity;
     LayoutInflater inflater;
     ImageView closeImageView;
+    R2DDialog r2DDialog;
 
+    public void setR2DDialog(R2DDialog r2DDialog) {
+        this.r2DDialog = r2DDialog;
+    }
 
     public SLoginBaseRelativeLayout(Context context) {
         super(context);
@@ -76,11 +81,15 @@ public abstract class SLoginBaseRelativeLayout extends SBaseRelativeLayout {
         this.addView(closeImageView,colseLp);
 
         closeImageView.setBackgroundResource(R.drawable.com_star_close);
-//        closeImageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            }
-//        });
+        closeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (r2DDialog != null){
+                    r2DDialog.dismiss();
+                }
+            }
+        });
 
 
     }

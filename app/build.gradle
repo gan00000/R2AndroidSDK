@@ -2,20 +2,38 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-    defaultConfig {
-        applicationId "com.ggr2.sdk.demo"
-        minSdkVersion 18
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-    }
+//    defaultConfig {
+//        applicationId "com.ggr2.sdk.demo"
+//        minSdkVersion 18
+//        targetSdkVersion 28
+//        versionCode 1
+//        versionName "1.0"
+//    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+
+        kcdn {
+            applicationId "com.ggr2.sdk.demo"
+            minSdkVersion 18
+            targetSdkVersion 28
+            versionCode 5  //厂商可自主定义，5以上
+            versionName "1.0"  //厂商可自主定义
+
+            resValue "string", "r2_game_id", "482"
+            resValue "string", "fb_app_id", "1018908544961672"
+            flavorDimensions "1"
+        }
+    }
+
+
 }
+
 
 repositories {
     flatDir {

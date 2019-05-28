@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <LinearLayout
+        android:layout_width="@dimen/px_900"
+        android:layout_height="@dimen/px_450"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_80"
+            android:background="@color/e_75787c"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/r2_login_logo"
+                android:padding="@dimen/px_5"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/px_20"
+            android:paddingRight="@dimen/px_20"
+            android:orientation="horizontal"
+            android:background="@color/e_bebebf"
+            android:gravity="center"
+
+            >
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px_50"
+                android:layout_marginBottom="@dimen/px_50"
+                android:orientation="vertical"
+                android:gravity="center"
+               >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/r2d_string_current_login_type"
+                    android:textSize="@dimen/sp_24"
+                    android:textColor="@android:color/black"
+                    />
+
+                <ImageView
+                    android:layout_width="@dimen/px_180"
+                    android:layout_height="@dimen/px_180"
+                    android:layout_marginTop="@dimen/px_30"
+                    android:gravity="center"
+                    android:padding="@dimen/px_5"
+                    android:id="@+id/r2d_current_unbind_logo"
+                    android:src="@drawable/r2d_fb_current"/>
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/px_50"
+                android:layout_marginBottom="@dimen/px_50"
+                android:layout_marginLeft="@dimen/px_80"
+                >
+
+
+
+                <TextView
+                    android:layout_width="@dimen/px_200"
+                    android:layout_height="@dimen/px_50"
+                    android:text="@string/r2d_string_logout_guest"
+
+                    android:gravity="center"
+                    android:minLines="1"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="@android:color/black"
+                    android:background="@android:color/white"
+
+                    android:id="@+id/r2d_current_unbind_logout"
+                    />
+
+                <TextView
+                    android:layout_width="@dimen/px_200"
+                    android:layout_height="@dimen/px_50"
+                    android:text="@string/r2d_string_unbind"
+                    android:layout_marginTop="@dimen/px_50"
+                    android:gravity="center"
+                    android:minLines="1"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="@android:color/black"
+                    android:background="@android:color/white"
+
+                    android:id="@+id/r2d_current_unbind_unbind_btn"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,22 +1,23 @@
 package com.ggr2.sdkwap.widget;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.core.base.utils.PL;
+import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.R;
-import com.ggr2.sdkwap.utils.StarPyUtil;
+import com.ggr2.sdkwap.api.StarpyImpl;
 import com.ggr2.sdkwap.login.LoginType;
+import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.r2games.sdk.R2SDK;
 import com.r2games.sdk.callbacks.R2Callback;
 import com.r2games.sdk.entity.R2Error;
 import com.r2games.sdk.entity.response.ResponseLoginData;
 import com.r2games.sdk.r2api.R2SDKAPI;
 import com.r2games.sdk.r2api.callback.R2APICallback;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by GanYuanrong on 2017/2/6.
@@ -70,16 +71,19 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
                         //注意： r2Uid,timestap, sign参数 是研发服务器端验证登录
                         //数据的合法性需要的参数，具体验签规则请联系R2 SDK服务器技术人员。
 
-                        saveLoginData(LoginType.R2GameLoginType_FB,r2Uid,timestamp,sign,false,false,false);
-
+                        StarPyUtil.saveLoginData(getTheContext(),LoginType.R2GameLoginType_FB,r2Uid,timestamp,sign,false,false,false);
+                        loginSuccess(loginData);
                     }
                     @Override
                     public void onCancel() {
                         //登录取消
+                        ToastUtils.toast(getTheContext(),R.string.r2d_string_login_cancel);
                     }
                     @Override
                     public void onError(R2Error error) {
                         //登录失败
+                        PL.e("error code:" + error.getCode() + "_desc:" + error.getDesc());
+                        ToastUtils.toast(getTheContext(),R.string.r2d_string_login_fail);
                     }
                 });
 
@@ -99,15 +103,20 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
                         //注意： r2Uid,timestap, sign参数 是研发服务器端验证登录
                         //数据的合法性需要的参数，具体验签规则请联系R2 SDK服务器技术人员。
 
-                        saveLoginData(LoginType.R2GameLoginType_GOOGLE,r2Uid,timestamp,sign,false,false,false);
+                        StarPyUtil.saveLoginData(getTheContext(), LoginType.R2GameLoginType_GOOGLE,r2Uid,timestamp,sign,false,false,false);
+
+                        loginSuccess(loginData);
                     }
                     @Override
                     public void onCancel() {
                         //登录取消
+                        ToastUtils.toast(getTheContext(),R.string.r2d_string_login_cancel);
                     }
                     @Override
                     public void onError(R2Error error) {
                         //登录失败
+                        PL.e("error code:" + error.getCode() + "_desc:" + error.getDesc());
+                        ToastUtils.toast(getTheContext(),R.string.r2d_string_login_fail);
                     }
                 });
 
@@ -137,7 +146,13 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
                             boolean linked_google_act = loginData.isBoundToGoogleAccount();
                             boolean linked_google_games = loginData.isBoundToGoogleGamesAccount();
 
-                            saveLoginData(LoginType.R2GameLoginType_GUEST,r2Uid,timestamp,sign,linked_fb,linked_google_act,linked_google_games);
+                            StarPyUtil.saveLoginData(getTheContext(),LoginType.R2GameLoginType_GUEST,r2Uid,timestamp,sign,linked_fb,linked_google_act,linked_google_games);
+
+                            showGuestTips(loginData);
+                        }else {
+
+                            PL.e("error code:" + code + "_desc:" + msg);
+                            ToastUtils.toast(getTheContext(),R.string.r2d_string_login_fail);
                         }
                     }
                 });
@@ -150,26 +165,45 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
         return contentView;
     }
 
-    private void saveLoginData(String loginType, String userId, String timestamp, String accessToken,boolean linked_fb,boolean linked_google_act,boolean linked_google_games ) {
+    AlertDialog alertDialog;
+    public void showGuestTips(final ResponseLoginData loginData){
 
-        JSONObject loginDataJsonObject = new JSONObject();
-        try {
-            loginDataJsonObject.put("userId",userId);
-            loginDataJsonObject.put("timestamp",timestamp);
-            loginDataJsonObject.put("accessToken",accessToken);
-            loginDataJsonObject.put("linked_fb",linked_fb);
-            loginDataJsonObject.put("linked_google_act",linked_google_act);
-            loginDataJsonObject.put("linked_google_games",linked_google_games);
+        View tipsView = activity.getLayoutInflater().inflate(R.layout.r2d_layout_login_guest_tips,null,false);
 
-            StarPyUtil.saveSdkLoginData(context,loginDataJsonObject.toString());
+        r2DDialog.setContentView(tipsView);
 
-            StarPyUtil.savePreviousLoginType(context,loginType);
+        View tipsOk = tipsView.findViewById(R.id.guest_tips_ok);
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+        tipsOk.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (alertDialog != null){
+                    alertDialog.dismiss();
+
+                }
+
+                loginSuccess(loginData);
+                r2DDialog.dismiss();
+
+            }
+        });
+
+        r2DDialog.setContentView(tipsView);
+
+//        alertDialog = new AlertDialog.Builder(getTheContext()).setView(tipsView).create();
+//        alertDialog.setCanceledOnTouchOutside(false);
+//        alertDialog.setCancelable(false);
+//        alertDialog.show();
 
     }
 
+
+    private void loginSuccess(ResponseLoginData loginData){
+        StarpyImpl.getInstance().setResponseLoginData(loginData);
+        if (StarpyImpl.getInstance().getR2CallbackLogin() != null){
+            StarpyImpl.getInstance().getR2CallbackLogin().onSuccess(loginData);
+        }
+    }
 
 }

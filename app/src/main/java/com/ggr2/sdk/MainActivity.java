@@ -10,11 +10,13 @@ import android.widget.Button;
 
 import com.core.base.utils.PL;
 import com.ggr2.sdkwap.api.IStarpy;
+import com.ggr2.sdkwap.api.R2Callback;
 import com.ggr2.sdkwap.api.StarpyFactory;
+import com.r2games.sdk.entity.response.ResponseLoginData;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button loginButton, othersPayButton,googlePayBtn,csButton,shareButton;
+    private Button loginButton;
 
 
     private IStarpy iStarpy;
@@ -26,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginButton = (Button) findViewById(R.id.demo_login);
-        othersPayButton = (Button) findViewById(R.id.demo_pay);
-        googlePayBtn = (Button) findViewById(R.id.demo_pay_google);
-        csButton = (Button) findViewById(R.id.demo_cs);
-        shareButton = (Button) findViewById(R.id.demo_share);
 
         this.activity = this;
 
@@ -58,25 +56,50 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                iStarpy.showLogin(activity);
+                iStarpy.showLogin(activity, new R2Callback() {
+                    @Override
+                    public void onSuccess(ResponseLoginData loginData) {
+
+                        // showLogin success
+                        String r2Uid = loginData.getR2Uid();
+                        String timestamp = loginData.getTimestamp();
+                        String sign = loginData.getSign();
+                        //注意： r2Uid,timestap, sign参数是研发服务器端验证
+                        //数据合法性需要的参数，具体验签规则请联系R2 SDK服务器技术人员。
+
+                        //研发可以根据如下方法判断当前登录的r2uid是否绑定过某种第三方账号
+                        boolean linked_fb = loginData.isBoundToFbAccount();
+                        boolean linked_google_act = loginData.isBoundToGoogleAccount();
+                        boolean linked_google_games = loginData.isBoundToGoogleGamesAccount();
+
+                    }
+                });
             }
         });
 
 
 
-        googlePayBtn.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.currentLoginType).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                iStarpy.showCurrentLoginInfo(activity);
+                iStarpy.showCurrentLoginView(activity);
 
             }
         });
 
-        csButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.bindact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iStarpy.showBindView(activity);
+            }
+        });
+
+
+        findViewById(R.id.unbindact).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iStarpy.showUnBindView(activity);
             }
         });
 

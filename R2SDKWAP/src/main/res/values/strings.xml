@@ -3,17 +3,31 @@
 
     <string name="r2_game_id"></string>
 
-    <string name="google_games_app_id">981052987434</string>
-    <string name="fb_app_id">981052987434</string>
+    <string name="google_games_app_id"></string>
+    <string name="fb_app_id"></string>
 
     <string name="r2d_string_guest_warning_tips">进入游戏后，建议绑定账号。\n  避免游戏资料丢失...</string>
+    <string name="r2d_string_guest_logout_warning_tips">登出游客账号后账号信息可能会丢失。\n  是否确认登出</string>
+    <string name="r2d_string_fbgg_logout_warning_tips">是否解除当前账号绑定</string>
 
     <string name="r2d_string_bind_account">绑定账号</string>
 
-    <string name="r2d_string_unbind">未绑定</string>
+    <string name="r2d_string_bind">绑定账号</string>
     <string name="r2d_string_logout_account">登出账号</string>
     <string name="r2d_string_current_login_type">当前登录方式</string>
     <string name="r2d_string_logout_guest">退出登录</string>
     <string name="r2d_string_bind_guest">绑定账号</string>
+    <string name="r2d_string_hasbind_account">已绑定账号</string>
+    <string name="r2d_string_unbind">解除绑定</string>
+    <string name="r2d_string_bind_success">绑定成功</string>
+    <string name="r2d_string_hasbind_other_tips">已经绑定其他账号</string>
+    <string name="r2d_string_ok">确定</string>
+    <string name="r2d_string_cancel">取消</string>
+    <string name="r2d_string_login_cancel">登录取消</string>
+    <string name="r2d_string_login_fail">登录失败</string>
+    <string name="r2d_string_unbind_success">解除绑定成功</string>
+    <string name="r2d_string_unbind_cancel">解除绑定取消</string>
+    <string name="r2d_string_unbind_fail">解除绑定失败</string>
+    <string name="r2d_string_unbind_tips">Facebook、Google登录方式才能进行解除绑定</string>
 
 </resources>

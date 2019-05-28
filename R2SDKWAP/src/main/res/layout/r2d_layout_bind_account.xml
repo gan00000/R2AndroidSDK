@@ -42,7 +42,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px_70"
-                android:layout_marginTop="@dimen/px_50"
+                android:layout_marginTop="@dimen/px_35"
                 android:gravity="center"
                >
 
@@ -62,7 +62,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px_70"
-                android:layout_marginTop="@dimen/px_40"
+                android:layout_marginTop="@dimen/px_35"
                 android:gravity="center"
                 android:id="@+id/r2d_fb_login_btn"
                 android:background="@drawable/r2d_bule_rectangle_bg">
@@ -76,15 +76,16 @@
 
 
                 <TextView
-                    android:layout_width="@dimen/px_160"
+                    android:layout_width="@dimen/px_120"
                     android:layout_height="@dimen/px_50"
-                    android:text="@string/r2d_string_unbind"
-                    android:layout_marginLeft="@dimen/px_50"
+                    android:text="@string/r2d_string_bind"
+                    android:layout_marginLeft="@dimen/px_15"
+                    android:layout_marginRight="@dimen/px_30"
                     android:gravity="center"
                     android:minLines="1"
                     android:textSize="@dimen/sp_18"
                     android:textColor="@android:color/black"
-                    android:background="@android:color/white"
+                    android:background="@drawable/r2d_rectangle_button_bg"
 
                     android:id="@+id/r2d_fb_bind"
                     />
@@ -97,6 +98,7 @@
                 android:layout_height="@dimen/px_70"
                 android:layout_marginTop="@dimen/px_30"
                 android:layout_marginBottom="@dimen/px_40"
+
                 android:gravity="center"
                 android:id="@+id/r2d_google_login_btn"
                 android:background="@drawable/r2d_white_rectangle_bg">
@@ -106,19 +108,20 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/px_5"
-                    android:src="@drawable/r2d_fb_banner"/>
+                    android:src="@drawable/r2d_google_banner"/>
 
 
                 <TextView
-                    android:layout_width="@dimen/px_160"
+                    android:layout_width="@dimen/px_120"
                     android:layout_height="@dimen/px_50"
-                    android:text="@string/r2d_string_unbind"
-                    android:layout_marginLeft="@dimen/px_50"
+                    android:text="@string/r2d_string_bind"
+                    android:layout_marginLeft="@dimen/px_15"
+                    android:layout_marginRight="@dimen/px_30"
                     android:gravity="center"
                     android:minLines="1"
                     android:textSize="@dimen/sp_18"
                     android:textColor="@android:color/black"
-                    android:background="@android:color/white"
+                    android:background="@drawable/r2d_rectangle_button_bg"
 
                     android:id="@+id/r2d_google_bind"
                     />

@@ -114,6 +114,59 @@ public class StarPyUtil {
         SPUtil.saveSimpleInfo(context,STAR_PY_SP_FILE, STARPY_LOGIN_USER_ID, uid);
     }*/
 
+    public static boolean isBindFB(Context context){
+        return JsonUtil.getBooleanValueByKey(context,getSdkLoginData(context), "linked_fb",false);
+    }
+
+    public static boolean isBindGoogle(Context context){
+        return JsonUtil.getBooleanValueByKey(context,getSdkLoginData(context), "linked_google_act",false);
+    }
+
+    public static void saveLoginData(Context context, String loginType, String userId, String timestamp, String accessToken,boolean linked_fb,boolean linked_google_act,boolean linked_google_games ) {
+
+        JSONObject loginDataJsonObject = new JSONObject();
+        try {
+            loginDataJsonObject.put("userId",userId);
+            loginDataJsonObject.put("timestamp",timestamp);
+            loginDataJsonObject.put("accessToken",accessToken);
+            loginDataJsonObject.put("linked_fb",linked_fb);
+            loginDataJsonObject.put("linked_google_act",linked_google_act);
+            loginDataJsonObject.put("linked_google_games",linked_google_games);
+
+            StarPyUtil.saveSdkLoginData(context,loginDataJsonObject.toString());
+
+            StarPyUtil.savePreviousLoginType(context,loginType);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void updateSdkLoginDataBindFB(Context context,boolean linked_fb){
+       String loginData = getSdkLoginData(context);
+        try {
+            JSONObject loginDataJsonObject = new JSONObject(loginData);
+            loginDataJsonObject.put("linked_fb",linked_fb);
+            StarPyUtil.saveSdkLoginData(context,loginDataJsonObject.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateSdkLoginDataBindGoogle(Context context,boolean linked_google_act){
+        String loginData = getSdkLoginData(context);
+        try {
+            JSONObject loginDataJsonObject = new JSONObject(loginData);
+            loginDataJsonObject.put("linked_google_act",linked_google_act);
+            StarPyUtil.saveSdkLoginData(context,loginDataJsonObject.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void saveSdkLoginData(Context context,String data){
         SPUtil.saveSimpleInfo(context,STAR_PY_SP_FILE,STARPY_LOGIN_SERVER_RETURN_DATA,data);
