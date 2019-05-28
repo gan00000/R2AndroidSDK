@@ -6,7 +6,11 @@ import android.content.Intent;
 import com.core.base.utils.PL;
 import com.ggr2.sdkwap.R;
 import com.ggr2.sdkwap.R2DDialog;
+import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.ggr2.sdkwap.widget.AccountLoginMainLayout;
+import com.ggr2.sdkwap.widget.BindAccountLayout;
+import com.ggr2.sdkwap.widget.CurrentGuestLoginLayout;
+import com.ggr2.sdkwap.widget.CurrentLoginLayout;
 import com.r2games.sdk.r2api.R2SDKAPI;
 
 
@@ -71,10 +75,36 @@ public class StarpyImpl implements IStarpy {
 
 
     @Override
-    public void login(Activity activity) {
+    public void showLogin(Activity activity) {
 
         R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
         r2DDialog.setContentView(new AccountLoginMainLayout(activity));
+        r2DDialog.show();
+
+    }
+
+    @Override
+    public void showCurrentLoginInfo(Activity activity) {
+        if (StarPyUtil.isGuestLogin(activity)){
+
+            R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
+            r2DDialog.setContentView(new CurrentGuestLoginLayout(activity));
+            r2DDialog.show();
+
+        }else {
+            R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
+            r2DDialog.setContentView(new CurrentLoginLayout(activity));
+            r2DDialog.show();
+        }
+
+    }
+
+
+    @Override
+    public void showBindView(Activity activity) {
+
+        R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
+        r2DDialog.setContentView(new BindAccountLayout(activity));
         r2DDialog.show();
 
     }

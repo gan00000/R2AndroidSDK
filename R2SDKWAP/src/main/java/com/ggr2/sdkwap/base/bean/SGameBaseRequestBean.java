@@ -3,7 +3,7 @@ package com.ggr2.sdkwap.base.bean;
 import android.content.Context;
 
 import com.core.base.utils.SStringUtil;
-import com.ggr2.sdkwap.base.utils.StarPyUtil;
+import com.ggr2.sdkwap.utils.StarPyUtil;
 
 /**
  * <p>Title: SSdkBaseRequestBean</p> <p>Description: 进入游戏角色之后请求参数实体，所有属性实例时都已经初始化</p>

@@ -12,7 +12,7 @@ import android.view.WindowManager;
 
 import com.core.base.utils.AppUtil;
 import com.core.base.utils.PL;
-import com.ggr2.sdkwap.base.utils.Localization;
+import com.ggr2.sdkwap.utils.Localization;
 
 /**
  * Created by gan on 2017/3/31.

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                iStarpy.login(activity);
+                iStarpy.showLogin(activity);
             }
         });
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                iStarpy.showCurrentLoginInfo(activity);
 
             }
         });
@@ -76,11 +76,7 @@ public class MainActivity extends AppCompatActivity {
         csButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
-                 * 打开客服接口
-                 * level：游戏等级
-                 * vipLevel：vip等级，没有就传""
-                 */
+                iStarpy.showBindView(activity);
             }
         });
 

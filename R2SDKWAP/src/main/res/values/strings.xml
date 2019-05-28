@@ -10,4 +10,10 @@
 
     <string name="r2d_string_bind_account">绑定账号</string>
 
+    <string name="r2d_string_unbind">未绑定</string>
+    <string name="r2d_string_logout_account">登出账号</string>
+    <string name="r2d_string_current_login_type">当前登录方式</string>
+    <string name="r2d_string_logout_guest">退出登录</string>
+    <string name="r2d_string_bind_guest">绑定账号</string>
+
 </resources>

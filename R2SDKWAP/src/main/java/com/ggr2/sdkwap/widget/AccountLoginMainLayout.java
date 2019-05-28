@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.ggr2.sdkwap.R;
-import com.ggr2.sdkwap.base.utils.StarPyUtil;
+import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.ggr2.sdkwap.login.LoginType;
 import com.r2games.sdk.R2SDK;
 import com.r2games.sdk.callbacks.R2Callback;
@@ -125,7 +125,7 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
                     public void onCompleted(int code, String msg,
                                             ResponseLoginData loginData) {
                         if (R2SDKAPI.RESPONSE_OK == code) {
-                            // login success
+                            // showLogin success
                             String r2Uid = loginData.getR2Uid();
                             String timestamp = loginData.getTimestamp();
                             String sign = loginData.getSign();

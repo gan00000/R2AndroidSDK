@@ -5,7 +5,7 @@ import android.content.Context;
 import com.core.base.bean.BaseReqeustBean;
 import com.core.base.utils.ResUtil;
 import com.core.base.utils.SStringUtil;
-import com.ggr2.sdkwap.base.utils.StarPyUtil;
+import com.ggr2.sdkwap.utils.StarPyUtil;
 
 /**
  * <p>Title: SSdkBaseRequestBean</p> <p>Description: SDK接口请求参数实体</p>
