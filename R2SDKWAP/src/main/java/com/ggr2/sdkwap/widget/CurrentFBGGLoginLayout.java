@@ -14,7 +14,7 @@ import com.ggr2.sdkwap.utils.StarPyUtil;
  * Created by GanYuanrong on 2017/2/6.
  */
 
-public class CurrentLoginLayout extends SLoginBaseRelativeLayout {
+public class CurrentFBGGLoginLayout extends SLoginBaseRelativeLayout {
 
     private View contentView;
 
@@ -23,17 +23,17 @@ public class CurrentLoginLayout extends SLoginBaseRelativeLayout {
     private View logoutView;
 
 
-    public CurrentLoginLayout(Context context) {
+    public CurrentFBGGLoginLayout(Context context) {
         super(context);
 
     }
 
 
-    public CurrentLoginLayout(Context context, AttributeSet attrs) {
+    public CurrentFBGGLoginLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CurrentLoginLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CurrentFBGGLoginLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

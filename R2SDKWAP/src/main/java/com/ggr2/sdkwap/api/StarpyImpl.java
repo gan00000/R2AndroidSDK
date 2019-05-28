@@ -15,7 +15,7 @@ import com.ggr2.sdkwap.widget.AccountLoginMainLayout;
 import com.ggr2.sdkwap.widget.AutoLoginLayout;
 import com.ggr2.sdkwap.widget.BindAccountLayout;
 import com.ggr2.sdkwap.widget.CurrentGuestLoginLayout;
-import com.ggr2.sdkwap.widget.CurrentLoginLayout;
+import com.ggr2.sdkwap.widget.CurrentFBGGLoginLayout;
 import com.ggr2.sdkwap.widget.UnbindAccountLayout;
 import com.r2games.sdk.entity.response.ResponseLoginData;
 import com.r2games.sdk.r2api.R2SDKAPI;
@@ -153,9 +153,9 @@ public class StarpyImpl implements IStarpy {
 
         }else {
             R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
-            CurrentLoginLayout currentLoginLayout = new CurrentLoginLayout(activity);
-            currentLoginLayout.setR2DDialog(r2DDialog);
-            r2DDialog.setContentView(currentLoginLayout);
+            CurrentFBGGLoginLayout currentFBGGLoginLayout = new CurrentFBGGLoginLayout(activity);
+            currentFBGGLoginLayout.setR2DDialog(r2DDialog);
+            r2DDialog.setContentView(currentFBGGLoginLayout);
             r2DDialog.show();
         }
 

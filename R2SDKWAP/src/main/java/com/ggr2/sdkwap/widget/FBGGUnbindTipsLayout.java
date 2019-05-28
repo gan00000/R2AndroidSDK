@@ -18,7 +18,7 @@ import com.r2games.sdk.entity.response.ResponseUnbindThirdPartyUidData;
  * Created by GanYuanrong on 2017/2/6.
  */
 
-public class FBGGLogoutTipsLayout extends SLoginBaseRelativeLayout {
+public class FBGGUnbindTipsLayout extends SLoginBaseRelativeLayout {
 
     private View contentView;
 
@@ -27,17 +27,17 @@ public class FBGGLogoutTipsLayout extends SLoginBaseRelativeLayout {
     private View logoutCancelView;
 
 
-    public FBGGLogoutTipsLayout(Context context) {
+    public FBGGUnbindTipsLayout(Context context) {
         super(context);
 
     }
 
 
-    public FBGGLogoutTipsLayout(Context context, AttributeSet attrs) {
+    public FBGGUnbindTipsLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public FBGGLogoutTipsLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FBGGUnbindTipsLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

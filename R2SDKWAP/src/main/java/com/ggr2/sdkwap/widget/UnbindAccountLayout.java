@@ -69,9 +69,9 @@ public class UnbindAccountLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
-                FBGGLogoutTipsLayout fbggLogoutTipsLayout = new FBGGLogoutTipsLayout(activity);
-                fbggLogoutTipsLayout.setR2DDialog(r2DDialog);
-                r2DDialog.setContentView(fbggLogoutTipsLayout);
+                FBGGUnbindTipsLayout fbggUnbindTipsLayout = new FBGGUnbindTipsLayout(activity);
+                fbggUnbindTipsLayout.setR2DDialog(r2DDialog);
+                r2DDialog.setContentView(fbggUnbindTipsLayout);
 
             }
         });
