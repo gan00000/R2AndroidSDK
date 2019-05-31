@@ -103,18 +103,21 @@ public class LoginAPI {
                     if (linked_fb){
 
                         StarPyUtil.saveLoginData(activity,LoginType.R2GameLoginType_FB,r2Uid,timestamp,sign,linked_fb,linked_google_act,linked_google_games);
+                        loginSuccess(loginData,r2DDialog);
 
                     }else if (linked_google_act){
                         
                         StarPyUtil.saveLoginData(activity,LoginType.R2GameLoginType_GOOGLE,r2Uid,timestamp,sign,linked_fb,linked_google_act,linked_google_games);
+                        loginSuccess(loginData,r2DDialog);
 
                     }else{
 
                         StarPyUtil.saveLoginData(activity,LoginType.R2GameLoginType_GUEST,r2Uid,timestamp,sign,linked_fb,linked_google_act,linked_google_games);
+                        showGuestTips(activity,loginData,r2DDialog);
                     }
 
 
-                    showGuestTips(activity,loginData,r2DDialog);
+
                 }else {
 
                     PL.e("error code:" + code + "_desc:" + msg);
