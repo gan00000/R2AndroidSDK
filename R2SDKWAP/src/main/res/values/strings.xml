@@ -30,5 +30,9 @@
     <string name="r2d_string_unbind_fail">解除绑定失败</string>
     <string name="r2d_string_unbind_tips">Facebook、Google登录方式才能进行解除绑定</string>
     <string name="r2d_string_auto_logining">自动登入中...</string>
+    <string name="r2d_string_login_first">请先登录</string>
+    <string name="r2d_string_google_hasbind">Google账号已被绑定</string>
+    <string name="r2d_string_fb_hasbind">Facebook账号已被绑定</string>
+    <string name="r2d_string_bind_fail">绑定失败</string>
 
 </resources>

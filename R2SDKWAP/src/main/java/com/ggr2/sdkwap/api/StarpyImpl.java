@@ -9,13 +9,12 @@ import com.core.base.utils.SignatureUtil;
 import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.R;
 import com.ggr2.sdkwap.R2DDialog;
-import com.ggr2.sdkwap.login.LoginType;
 import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.ggr2.sdkwap.widget.AccountLoginMainLayout;
 import com.ggr2.sdkwap.widget.AutoLoginLayout;
 import com.ggr2.sdkwap.widget.BindAccountLayout;
-import com.ggr2.sdkwap.widget.CurrentGuestLoginLayout;
 import com.ggr2.sdkwap.widget.CurrentFBGGLoginLayout;
+import com.ggr2.sdkwap.widget.CurrentGuestLoginLayout;
 import com.ggr2.sdkwap.widget.UnbindAccountLayout;
 import com.r2games.sdk.entity.response.ResponseLoginData;
 import com.r2games.sdk.r2api.R2SDKAPI;
@@ -141,6 +140,10 @@ public class StarpyImpl implements IStarpy {
     public void showCurrentLoginView(Activity activity, R2LogoutCallback r2LogoutCallback) {
 
         this.r2LogoutCallback = r2LogoutCallback;
+        if (!StarPyUtil.isLogin(activity) || SStringUtil.isEmpty(StarPyUtil.getPreviousLoginType(activity))){
+            ToastUtils.toast(activity,R.string.r2d_string_login_first);
+            return;
+        }
 
         if (StarPyUtil.isGuestLogin(activity)){
 
@@ -177,22 +180,37 @@ public class StarpyImpl implements IStarpy {
     public void showUnBindView(Activity activity, R2LogoutCallback r2LogoutCallback) {
 
         this.r2LogoutCallback = r2LogoutCallback;
-        if (LoginType.R2GameLoginType_GUEST.equals(StarPyUtil.getPreviousLoginType(activity))){
-            ToastUtils.toast(activity,R.string.r2d_string_unbind_tips);
+
+        if (!StarPyUtil.isLogin(activity) || SStringUtil.isEmpty(StarPyUtil.getPreviousLoginType(activity))){
+            ToastUtils.toast(activity,R.string.r2d_string_login_first);
             return;
         }
 
+
         R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
-        UnbindAccountLayout unbindAccountLayout = new UnbindAccountLayout(activity);
-        unbindAccountLayout.setR2DDialog(r2DDialog);
-        r2DDialog.setContentView(unbindAccountLayout);
-        r2DDialog.show();
+
+        if (StarPyUtil.isGuestLogin(activity)){
+
+            CurrentGuestLoginLayout currentGuestLoginLayout = new CurrentGuestLoginLayout(activity);
+            currentGuestLoginLayout.setR2DDialog(r2DDialog);
+            r2DDialog.setContentView(currentGuestLoginLayout);
+            r2DDialog.show();
+
+        }else {
+
+            UnbindAccountLayout unbindAccountLayout = new UnbindAccountLayout(activity);
+            unbindAccountLayout.setR2DDialog(r2DDialog);
+            r2DDialog.setContentView(unbindAccountLayout);
+            r2DDialog.show();
+        }
+
+
     }
 
     public void logout(Activity activity){
 
         R2SDKAPI.getInstance(activity).logout(activity);
-        StarPyUtil.savePreviousLoginType(activity,"");
+//        StarPyUtil.savePreviousLoginType(activity,"");
         StarPyUtil.saveSdkLoginData(activity,"");
 
         if (this.r2LogoutCallback == null){

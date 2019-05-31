@@ -89,6 +89,7 @@ public class FBGGUnbindTipsLayout extends SLoginBaseRelativeLayout {
                     @Override
                     public void onSuccess(ResponseUnbindThirdPartyUidData result) {
                         //unbind success
+                        StarPyUtil.savePreviousLoginType(getTheContext(), LoginType.R2GameLoginType_GUEST);
                         ToastUtils.toast(getTheContext(),R.string.r2d_string_unbind_success);
                         r2DDialog.dismiss();
                     }

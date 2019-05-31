@@ -31,19 +31,20 @@
                     android:id="@+id/currentLoginType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="当前登录方式" />
+                    android:text="进入游戏前 当前登录方式" />
 
                 <Button
                     android:id="@+id/bindact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:text="绑定账号" />
 
                 <Button
                     android:id="@+id/unbindact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="解除绑定" />
+                    android:text="进入游戏内 解除绑定" />
 
                <!-- <Button
                     android:id="@+id/demo_share"

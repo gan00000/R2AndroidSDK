@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.R;
+import com.ggr2.sdkwap.login.LoginType;
 import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.r2games.sdk.entity.response.ResponseBindThirdPartyUidData;
 import com.r2games.sdk.r2api.R2SDKAPI;
@@ -56,11 +57,13 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
-                if (!StarPyUtil.isBindGoogle(getTheContext())) {
-                    guestBindFB();
-                }else {
-                    ToastUtils.toast(getTheContext(),R.string.r2d_string_hasbind_other_tips);
-                }
+//                if (!StarPyUtil.isBindGoogle(getTheContext())) {
+//                    guestBindFB();
+//                }else {
+//                    ToastUtils.toast(getTheContext(),R.string.r2d_string_hasbind_other_tips);
+//                }
+
+                guestBindFB();
             }
         });
 
@@ -68,11 +71,13 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
-                if (!StarPyUtil.isBindFB(getTheContext())) {
-                    guestBindGoogle();
-                }else {
-                    ToastUtils.toast(getTheContext(),R.string.r2d_string_hasbind_other_tips);
-                }
+//                if (!StarPyUtil.isBindFB(getTheContext())) {
+//                    guestBindGoogle();
+//                }else {
+//                    ToastUtils.toast(getTheContext(),R.string.r2d_string_hasbind_other_tips);
+//                }
+
+                guestBindGoogle();
             }
         });
         if (StarPyUtil.isBindFB(getTheContext())){
@@ -94,11 +99,18 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onCompleted(int code, String msg,
                                     ResponseBindThirdPartyUidData t) {
-                if (R2SDKAPI.RESPONSE_OK == code) {
+                if (R2SDKAPI.RESPONSE_OK == 1009){
+
+                    ToastUtils.toast(getTheContext(),R.string.r2d_string_google_hasbind);
+
+                }else if (R2SDKAPI.RESPONSE_OK == code) {
                     // bind success
                     StarPyUtil.updateSdkLoginDataBindGoogle(getTheContext(),true);
+                    StarPyUtil.savePreviousLoginType(getTheContext(), LoginType.R2GameLoginType_GOOGLE);
                     ToastUtils.toast(getTheContext(),R.string.r2d_string_bind_success);
                     r2DDialog.dismiss();
+                }else {
+                    ToastUtils.toast(getTheContext(),R.string.r2d_string_bind_fail);
                 }
             }
         });
@@ -111,11 +123,19 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
 
             @Override
             public void onCompleted(int code, String msg,ResponseBindThirdPartyUidData t) {
-                if (R2SDKAPI.RESPONSE_OK == code) {
+
+                if (R2SDKAPI.RESPONSE_OK == 1009){
+
+                    ToastUtils.toast(getTheContext(),R.string.r2d_string_fb_hasbind);
+
+                }else if (R2SDKAPI.RESPONSE_OK == code) {
                     // bind success
                     StarPyUtil.updateSdkLoginDataBindFB(getTheContext(),true);
+                    StarPyUtil.savePreviousLoginType(getTheContext(), LoginType.R2GameLoginType_FB);
                     ToastUtils.toast(getTheContext(),R.string.r2d_string_bind_success);
                     r2DDialog.dismiss();
+                }else {
+                    ToastUtils.toast(getTheContext(),R.string.r2d_string_bind_fail);
                 }
             }
         });
