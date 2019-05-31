@@ -34,5 +34,6 @@
     <string name="r2d_string_google_hasbind">Google账号已被绑定</string>
     <string name="r2d_string_fb_hasbind">Facebook账号已被绑定</string>
     <string name="r2d_string_bind_fail">绑定失败</string>
+    <string name="r2d_string_account_already_bind">账号已经绑定</string>
 
 </resources>

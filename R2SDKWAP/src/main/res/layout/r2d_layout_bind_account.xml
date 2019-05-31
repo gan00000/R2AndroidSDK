@@ -86,7 +86,7 @@
                     android:textSize="@dimen/sp_18"
                     android:textColor="@android:color/black"
                     android:background="@drawable/r2d_rectangle_button_bg"
-
+                    android:visibility="gone"
                     android:id="@+id/r2d_fb_bind"
                     />
 
@@ -122,7 +122,7 @@
                     android:textSize="@dimen/sp_18"
                     android:textColor="@android:color/black"
                     android:background="@drawable/r2d_rectangle_button_bg"
-
+                    android:visibility="gone"
                     android:id="@+id/r2d_google_bind"
                     />
 

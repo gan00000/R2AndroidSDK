@@ -63,6 +63,13 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
 //                    ToastUtils.toast(getTheContext(),R.string.r2d_string_hasbind_other_tips);
 //                }
 
+                if (StarPyUtil.isBindGoogle(getTheContext())){
+//                  googleBind.setEnabled(false);
+//                  googleBind.setText(R.string.r2d_string_hasbind_account);
+                    ToastUtils.toast(getTheContext(),R.string.r2d_string_account_already_bind);
+                    return;
+                }
+
                 guestBindFB();
             }
         });
@@ -76,17 +83,22 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
 //                }else {
 //                    ToastUtils.toast(getTheContext(),R.string.r2d_string_hasbind_other_tips);
 //                }
-
+                if (StarPyUtil.isBindGoogle(getTheContext())){
+//                  fbBind.setEnabled(false);
+//                  fbBind.setText(R.string.r2d_string_hasbind_account);
+                    ToastUtils.toast(getTheContext(),R.string.r2d_string_account_already_bind);
+                    return;
+                }
                 guestBindGoogle();
             }
         });
         if (StarPyUtil.isBindFB(getTheContext())){
-            fbBind.setEnabled(false);
-            fbBind.setText(R.string.r2d_string_hasbind_account);
+//            fbBind.setEnabled(false);
+//            fbBind.setText(R.string.r2d_string_hasbind_account);
         }
         if (StarPyUtil.isBindGoogle(getTheContext())){
-            googleBind.setEnabled(false);
-            googleBind.setText(R.string.r2d_string_hasbind_account);
+//            googleBind.setEnabled(false);
+//            googleBind.setText(R.string.r2d_string_hasbind_account);
         }
 
         return contentView;
