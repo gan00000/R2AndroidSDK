@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.ggr2.sdkwap.R;
-import com.ggr2.sdkwap.api.StarpyImpl;
+import com.ggr2.sdkwap.api.GameSDKImpl;
 import com.ggr2.sdkwap.utils.StarPyUtil;
 
 /**
@@ -59,7 +59,7 @@ public class CurrentFBGGLoginLayout extends SLoginBaseRelativeLayout {
         logoutView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                StarpyImpl.getInstance().logout(activity);
+                GameSDKImpl.getInstance().logout(activity);
                 r2DDialog.dismiss();
 
             }

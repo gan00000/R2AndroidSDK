@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.ggr2.sdkwap.R;
-import com.ggr2.sdkwap.api.StarpyImpl;
+import com.ggr2.sdkwap.api.GameSDKImpl;
 
 /**
  * Created by GanYuanrong on 2017/2/6.
@@ -63,7 +63,7 @@ public class GuestLogoutTipsLayout extends SLoginBaseRelativeLayout {
         logoutOkView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                StarpyImpl.getInstance().logout(activity);
+                GameSDKImpl.getInstance().logout(activity);
                 r2DDialog.dismiss();
             }
         });

@@ -20,9 +20,9 @@ import com.r2games.sdk.entity.response.ResponseLoginData;
 import com.r2games.sdk.r2api.R2SDKAPI;
 
 
-public class StarpyImpl implements IStarpy {
+public class GameSDKImpl implements IGameSDK {
 
-    private static StarpyImpl starpy;
+    private static GameSDKImpl starpy;
 
     private ResponseLoginData responseLoginData;
 
@@ -34,12 +34,12 @@ public class StarpyImpl implements IStarpy {
         this.responseLoginData = responseLoginData;
     }
 
-    private StarpyImpl() {
+    private GameSDKImpl() {
     }
 
-    public static StarpyImpl getInstance(){
+    public static GameSDKImpl getInstance(){
         if (starpy == null){
-            starpy = new StarpyImpl();
+            starpy = new GameSDKImpl();
         }
         return starpy;
     }
@@ -93,7 +93,7 @@ public class StarpyImpl implements IStarpy {
 
     @Override
     public void initSDK(final Activity activity) {
-        PL.i("IStarpy initSDK");
+        PL.i("IGameSDK initSDK");
         //清除上一次登录成功的返回值
 //        StarPyUtil.saveSdkLoginData(activity,"");
 

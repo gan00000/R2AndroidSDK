@@ -8,7 +8,7 @@ import com.core.base.utils.PL;
 import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.R;
 import com.ggr2.sdkwap.R2DDialog;
-import com.ggr2.sdkwap.api.StarpyImpl;
+import com.ggr2.sdkwap.api.GameSDKImpl;
 import com.ggr2.sdkwap.utils.StarPyUtil;
 import com.r2games.sdk.R2SDK;
 import com.r2games.sdk.callbacks.R2Callback;
@@ -150,9 +150,9 @@ public class LoginAPI {
 
 
     private static void loginSuccess(ResponseLoginData loginData, R2DDialog r2DDialog){
-        StarpyImpl.getInstance().setResponseLoginData(loginData);
-        if (StarpyImpl.getInstance().getR2LoginCallbackLogin() != null){
-            StarpyImpl.getInstance().getR2LoginCallbackLogin().onSuccess(loginData);
+        GameSDKImpl.getInstance().setResponseLoginData(loginData);
+        if (GameSDKImpl.getInstance().getR2LoginCallbackLogin() != null){
+            GameSDKImpl.getInstance().getR2LoginCallbackLogin().onSuccess(loginData);
             if (r2DDialog != null) {
                 r2DDialog.dismiss();
             }

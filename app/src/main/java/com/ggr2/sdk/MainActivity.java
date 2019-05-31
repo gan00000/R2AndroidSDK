@@ -10,10 +10,10 @@ import android.widget.Button;
 
 import com.core.base.utils.PL;
 import com.core.base.utils.ToastUtils;
-import com.ggr2.sdkwap.api.IStarpy;
+import com.ggr2.sdkwap.api.IGameSDK;
 import com.ggr2.sdkwap.api.R2LoginCallback;
 import com.ggr2.sdkwap.api.R2LogoutCallback;
-import com.ggr2.sdkwap.api.StarpyFactory;
+import com.ggr2.sdkwap.api.GameSDKFactory;
 import com.r2games.sdk.entity.response.ResponseLoginData;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
 
 
-    private IStarpy iStarpy;
+    private IGameSDK iGameSDK;
 
     Activity activity;
 
@@ -33,15 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
         this.activity = this;
 
-        iStarpy = StarpyFactory.create();
+        iGameSDK = GameSDKFactory.create();
 
-//        iStarpy.setGameLanguage(this, SGameLanguage.zh_CH);
+//        iGameSDK.setGameLanguage(this, SGameLanguage.zh_CH);
 
         //初始化sdk
-        iStarpy.initSDK(this);
+        iGameSDK.initSDK(this);
 
         //在游戏Activity的onCreate生命周期中调用
-        iStarpy.onCreate(this);
+        iGameSDK.onCreate(this);
 
 
         /**
@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
          * severCode 角色伺服器id
          * serverName 角色伺服器名称
          */
-//        iStarpy.registerRoleInfo(this, "roleid_1", "roleName", "rolelevel", "1000", "serverName");
+//        iGameSDK.registerRoleInfo(this, "roleid_1", "roleName", "rolelevel", "1000", "serverName");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                iStarpy.showLogin(activity, new R2LoginCallback() {
+                iGameSDK.showLogin(activity, new R2LoginCallback() {
                     @Override
                     public void onSuccess(ResponseLoginData loginData) {
 
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                iStarpy.showCurrentLoginView(activity, new R2LogoutCallback() {
+                iGameSDK.showCurrentLoginView(activity, new R2LogoutCallback() {
                     @Override
                     public void onSuccess() {
                         ToastUtils.toast(activity,"退出游戏");
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bindact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iStarpy.showBindView(activity);
+                iGameSDK.showBindView(activity);
             }
         });
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.unbindact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                iStarpy.showUnBindView(activity, new R2LogoutCallback() {
+                iGameSDK.showUnBindView(activity, new R2LogoutCallback() {
                     @Override
                     public void onSuccess() {
                         ToastUtils.toast(activity,"退出游戏");
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         PL.i("activity onResume");
-        iStarpy.onResume(this);
+        iGameSDK.onResume(this);
     }
 
 
@@ -136,13 +136,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        iStarpy.onActivityResult(this, requestCode, resultCode, data);
+        iGameSDK.onActivityResult(this, requestCode, resultCode, data);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        iStarpy.onPause(this);
+        iGameSDK.onPause(this);
         PL.i("activity onPause");
     }
 
@@ -150,26 +150,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         PL.i("activity onStop");
-        iStarpy.onStop(this);
+        iGameSDK.onStop(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         PL.i("activity onDestroy");
-        iStarpy.onDestroy(this);
+        iGameSDK.onDestroy(this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PL.i("activity onRequestPermissionsResult");
-        iStarpy.onRequestPermissionsResult(this,requestCode,permissions,grantResults);
+        iGameSDK.onRequestPermissionsResult(this,requestCode,permissions,grantResults);
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        iStarpy.onWindowFocusChanged(this,hasFocus);
+        iGameSDK.onWindowFocusChanged(this,hasFocus);
     }
 }
