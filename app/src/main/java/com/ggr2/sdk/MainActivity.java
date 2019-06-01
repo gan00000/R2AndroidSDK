@@ -71,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 iGameSDK.showCurrentLoginView(activity, new R2LogoutCallback() {
                     @Override
                     public void onSuccess() {
-                        ToastUtils.toast(activity,"退出游戏");
+                        ToastUtils.toast(activity,"退出游戏了");
 
                         //todo 游戏处理退出，然后重新调用登录接口
-                        doLogin();
+                        doLoginFromLoginout();
                     }
                 });
 
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
 
-                        ToastUtils.toast(activity,"退出游戏");
+                        ToastUtils.toast(activity,"退出游戏了");
 
                         //todo 游戏处理退出，然后重新调用登录接口
-                        doLogin();
+                        doLoginFromLoginout();
 
                     }
                 });
@@ -112,7 +112,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doLogin() {
-        iGameSDK.showLogin(activity, new R2LoginCallback() {
+        //直接登录isNeedAutoLogin为true, 点击退出登录后再调用此方法回到登录界面isNeedAutoLogin为false
+        iGameSDK.showLogin(activity,true, new R2LoginCallback() {
+            @Override
+            public void onSuccess(ResponseLoginData loginData) {
+
+                // showLogin success
+                String r2Uid = loginData.getR2Uid();
+                String timestamp = loginData.getTimestamp();
+                String sign = loginData.getSign();
+                //注意： r2Uid,timestap, sign参数是研发服务器端验证
+                //数据合法性需要的参数，具体验签规则请联系R2 SDK服务器技术人员。
+
+                //研发可以根据如下方法判断当前登录的r2uid是否绑定过某种第三方账号
+                boolean linked_fb = loginData.isBoundToFbAccount();
+                boolean linked_google_act = loginData.isBoundToGoogleAccount();
+                boolean linked_google_games = loginData.isBoundToGoogleGamesAccount();
+
+                ToastUtils.toast(activity,"登录成功  r2Uid:" + r2Uid);
+
+            }
+        });
+    }
+
+    private void doLoginFromLoginout() {
+        //直接登录isNeedAutoLogin为true, 点击退出登录后再调用此方法回到登录界面isNeedAutoLogin为false
+        iGameSDK.showLogin(activity,false, new R2LoginCallback() {
             @Override
             public void onSuccess(ResponseLoginData loginData) {
 

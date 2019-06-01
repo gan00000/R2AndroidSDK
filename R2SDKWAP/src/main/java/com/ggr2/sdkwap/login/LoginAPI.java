@@ -10,6 +10,7 @@ import com.ggr2.sdkwap.R;
 import com.ggr2.sdkwap.R2DDialog;
 import com.ggr2.sdkwap.api.GameSDKImpl;
 import com.ggr2.sdkwap.utils.StarPyUtil;
+import com.ggr2.sdkwap.widget.AccountLoginMainLayout;
 import com.r2games.sdk.R2SDK;
 import com.r2games.sdk.callbacks.R2Callback;
 import com.r2games.sdk.entity.R2Error;
@@ -19,7 +20,7 @@ import com.r2games.sdk.r2api.callback.R2APICallback;
 
 public class LoginAPI {
 
-    public static void fbLogin(final  Activity activity, final R2DDialog r2DDialog){
+    public static void fbLogin(final  Activity activity, final R2DDialog r2DDialog, final boolean isAutoLogin){
         R2SDK.getInstance(activity).loginWithFacebookUid(activity, new R2Callback<ResponseLoginData>() {
             @Override
             public void onSuccess(ResponseLoginData loginData) {
@@ -36,18 +37,24 @@ public class LoginAPI {
             public void onCancel() {
                 //登录取消
                 ToastUtils.toast(activity, R.string.r2d_string_login_cancel);
+                if (isAutoLogin){
+                    autoLoginFail(activity, r2DDialog);
+                }
             }
             @Override
             public void onError(R2Error error) {
                 //登录失败
                 PL.e("error code:" + error.getCode() + "_desc:" + error.getDesc());
                 ToastUtils.toast(activity,R.string.r2d_string_login_fail);
+                if (isAutoLogin){
+                    autoLoginFail(activity, r2DDialog);
+                }
             }
         });
     }
 
 
-    public static void googleLogin(final  Activity activity, final R2DDialog r2DDialog){
+    public static void googleLogin(final  Activity activity, final R2DDialog r2DDialog, final boolean isAutoLogin){
 
         R2SDK.getInstance(activity).loginWithGoogleAccountUid(activity, new R2Callback<ResponseLoginData>() {
             @Override
@@ -66,19 +73,28 @@ public class LoginAPI {
             public void onCancel() {
                 //登录取消
                 ToastUtils.toast(activity,R.string.r2d_string_login_cancel);
+
+                if (isAutoLogin){
+                    autoLoginFail(activity, r2DDialog);
+                }
+
             }
             @Override
             public void onError(R2Error error) {
                 //登录失败
                 PL.e("error code:" + error.getCode() + "_desc:" + error.getDesc());
                 ToastUtils.toast(activity,R.string.r2d_string_login_fail);
+
+                if (isAutoLogin){
+                    autoLoginFail(activity, r2DDialog);
+                }
             }
         });
 
     }
 
 
-    public static void guestLogin(final  Activity activity, final R2DDialog r2DDialog){
+    public static void guestLogin(final  Activity activity, final R2DDialog r2DDialog, final boolean isAutoLogin){
 
 
 
@@ -122,6 +138,10 @@ public class LoginAPI {
 
                     PL.e("error code:" + code + "_desc:" + msg);
                     ToastUtils.toast(activity,R.string.r2d_string_login_fail);
+
+                    if (isAutoLogin){
+                        autoLoginFail(activity, r2DDialog);
+                    }
                 }
             }
         });
@@ -172,6 +192,13 @@ public class LoginAPI {
                 r2DDialog.dismiss();
             }
         }
+    }
+
+    private static void autoLoginFail(Activity activity, R2DDialog r2DDialog){
+        AccountLoginMainLayout accountLoginMainLayout = new AccountLoginMainLayout(activity);
+        accountLoginMainLayout.setR2DDialog(r2DDialog);
+        r2DDialog.setContentView(accountLoginMainLayout);
+        r2DDialog.show();
     }
 
 }

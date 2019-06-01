@@ -109,7 +109,7 @@ public class GameSDKImpl implements IGameSDK {
 
 
     @Override
-    public void showLogin(Activity activity, R2LoginCallback r2LoginCallback) {
+    public void showLogin(Activity activity,boolean isNeedAutoLogin, R2LoginCallback r2LoginCallback) {
 
         PL.i("fb keyhash:" + SignatureUtil.getHashKey(activity, activity.getPackageName()));
         PL.i("google sha1:" + SignatureUtil.getSignatureSHA1WithColon(activity, activity.getPackageName()));
@@ -119,16 +119,19 @@ public class GameSDKImpl implements IGameSDK {
 
         R2DDialog r2DDialog = new R2DDialog(activity, R.style.Starpy_Theme_AppCompat_Dialog_Notitle_Fullscreen);
 
-        if (SStringUtil.isEmpty(StarPyUtil.getPreviousLoginType(activity))){
-            AccountLoginMainLayout accountLoginMainLayout = new AccountLoginMainLayout(activity);
-            accountLoginMainLayout.setR2DDialog(r2DDialog);
-            r2DDialog.setContentView(accountLoginMainLayout);
-            r2DDialog.show();
-        }else {
+        if (isNeedAutoLogin && SStringUtil.isNotEmpty(StarPyUtil.getPreviousLoginType(activity))){
 
             AutoLoginLayout autoLoginLayout = new AutoLoginLayout(activity);
             autoLoginLayout.setR2DDialog(r2DDialog);
             r2DDialog.setContentView(autoLoginLayout);
+            r2DDialog.show();
+
+
+        }else {
+
+            AccountLoginMainLayout accountLoginMainLayout = new AccountLoginMainLayout(activity);
+            accountLoginMainLayout.setR2DDialog(r2DDialog);
+            r2DDialog.setContentView(accountLoginMainLayout);
             r2DDialog.show();
 
         }

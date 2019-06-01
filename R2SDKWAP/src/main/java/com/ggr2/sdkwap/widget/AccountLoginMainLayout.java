@@ -51,7 +51,7 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
-                LoginAPI.fbLogin(activity,r2DDialog);
+                LoginAPI.fbLogin(activity,r2DDialog,false);
 
 
             }
@@ -60,7 +60,7 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
-                LoginAPI.googleLogin(activity,r2DDialog);
+                LoginAPI.googleLogin(activity,r2DDialog,false);
 
 
 
@@ -70,7 +70,7 @@ public class AccountLoginMainLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onClick(View v) {
 
-                LoginAPI.guestLogin(activity,r2DDialog);
+                LoginAPI.guestLogin(activity,r2DDialog,false);
 
             }
         });

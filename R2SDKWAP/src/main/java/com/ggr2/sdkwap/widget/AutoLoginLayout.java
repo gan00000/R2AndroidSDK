@@ -60,14 +60,14 @@ public class AutoLoginLayout extends SLoginBaseRelativeLayout {
         String loginType = StarPyUtil.getPreviousLoginType(getTheContext());
         if (LoginType.R2GameLoginType_GUEST.equals(loginType)){
 
-            LoginAPI.guestLogin(activity,r2DDialog);
+            LoginAPI.guestLogin(activity,r2DDialog,true);
 
         }else if (LoginType.R2GameLoginType_FB.equals(loginType)){
 
-            LoginAPI.fbLogin(activity,r2DDialog);
+            LoginAPI.fbLogin(activity,r2DDialog,true);
 
         }else if (LoginType.R2GameLoginType_GOOGLE.equals(loginType)){
-            LoginAPI.googleLogin(activity,r2DDialog);
+            LoginAPI.googleLogin(activity,r2DDialog,true);
         }
     }
 }
