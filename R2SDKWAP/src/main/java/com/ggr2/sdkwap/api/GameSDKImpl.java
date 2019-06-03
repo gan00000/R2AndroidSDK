@@ -216,7 +216,7 @@ public class GameSDKImpl implements IGameSDK {
 //        StarPyUtil.savePreviousLoginType(activity,"");
         StarPyUtil.saveSdkLoginData(activity,"");
 
-        if (this.r2LogoutCallback == null){
+        if (this.r2LogoutCallback != null){
             this.r2LogoutCallback.onSuccess();
         }
 
