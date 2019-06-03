@@ -17,6 +17,7 @@ import com.ggr2.sdkwap.widget.CurrentFBGGLoginLayout;
 import com.ggr2.sdkwap.widget.CurrentGuestLoginLayout;
 import com.ggr2.sdkwap.widget.UnbindAccountLayout;
 import com.r2games.sdk.entity.response.ResponseLoginData;
+import com.r2games.sdk.facebook.R2FacebookApi;
 import com.r2games.sdk.r2api.R2SDKAPI;
 
 
@@ -215,6 +216,7 @@ public class GameSDKImpl implements IGameSDK {
         R2SDKAPI.getInstance(activity).logout(activity);
 //        StarPyUtil.savePreviousLoginType(activity,"");
         StarPyUtil.saveSdkLoginData(activity,"");
+        R2FacebookApi.logout();
 
         if (this.r2LogoutCallback != null){
             this.r2LogoutCallback.onSuccess();
