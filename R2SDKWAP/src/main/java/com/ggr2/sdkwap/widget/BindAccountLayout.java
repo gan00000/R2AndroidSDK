@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import com.core.base.utils.ToastUtils;
 import com.ggr2.sdkwap.R;
@@ -22,7 +21,7 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
 
     private View contentView;
 
-    private TextView fbBind,googleBind;
+    private View fbBind,googleBind;
 
 
     public BindAccountLayout(Context context) {
