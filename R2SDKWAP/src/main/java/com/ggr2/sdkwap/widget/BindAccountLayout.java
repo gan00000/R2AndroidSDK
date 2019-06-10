@@ -110,7 +110,7 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onCompleted(int code, String msg,
                                     ResponseBindThirdPartyUidData t) {
-                if (R2SDKAPI.RESPONSE_OK == 1009){
+                if (code == 1009){
 
                     ToastUtils.toast(getTheContext(),R.string.r2d_string_google_hasbind);
 
@@ -135,7 +135,7 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
             @Override
             public void onCompleted(int code, String msg,ResponseBindThirdPartyUidData t) {
 
-                if (R2SDKAPI.RESPONSE_OK == 1009){
+                if (code == 1009){
 
                     ToastUtils.toast(getTheContext(),R.string.r2d_string_fb_hasbind);
 
