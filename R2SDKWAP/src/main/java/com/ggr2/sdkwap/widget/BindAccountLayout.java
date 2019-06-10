@@ -48,8 +48,8 @@ public class BindAccountLayout extends SLoginBaseRelativeLayout {
 
         contentView = inflater.inflate(R.layout.r2d_layout_bind_account, null);
 
-        fbBind = contentView.findViewById(R.id.r2d_fb_bind);
-        googleBind = contentView.findViewById(R.id.r2d_google_bind);
+        fbBind = contentView.findViewById(R.id.r2d_fb_bind_btn);
+        googleBind = contentView.findViewById(R.id.r2d_google_bind_btn);
 
 
 

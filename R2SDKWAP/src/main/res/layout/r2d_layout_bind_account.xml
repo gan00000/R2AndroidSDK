@@ -64,7 +64,7 @@
                 android:layout_height="@dimen/px_70"
                 android:layout_marginTop="@dimen/px_35"
                 android:gravity="center"
-                android:id="@+id/r2d_fb_login_btn"
+                android:id="@+id/r2d_fb_bind_btn"
                 android:background="@drawable/r2d_bule_rectangle_bg">
 
                 <ImageView
@@ -100,7 +100,7 @@
                 android:layout_marginBottom="@dimen/px_40"
 
                 android:gravity="center"
-                android:id="@+id/r2d_google_login_btn"
+                android:id="@+id/r2d_google_bind_btn"
                 android:background="@drawable/r2d_white_rectangle_bg">
 
                 <ImageView
