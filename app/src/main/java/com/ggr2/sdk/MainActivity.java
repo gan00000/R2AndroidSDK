@@ -10,11 +10,15 @@ import android.widget.Button;
 
 import com.core.base.utils.PL;
 import com.core.base.utils.ToastUtils;
+import com.ggr2.sdkwap.api.GameSDKFactory;
 import com.ggr2.sdkwap.api.IGameSDK;
 import com.ggr2.sdkwap.api.R2LoginCallback;
 import com.ggr2.sdkwap.api.R2LogoutCallback;
-import com.ggr2.sdkwap.api.GameSDKFactory;
 import com.r2games.sdk.entity.response.ResponseLoginData;
+import com.r2games.sdk.google.iab.R2GoogleIabApi;
+import com.r2games.sdk.google.iab.callbacks.GoogleIabCallback;
+import com.r2games.sdk.google.iab.entity.GoogleIabError;
+import com.r2games.sdk.google.iab.entity.GoogleIabResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -208,4 +212,63 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
         iGameSDK.onWindowFocusChanged(this,hasFocus);
     }
+
+
+    public void pay() {
+
+//        public static void doIabPayExternalTrack(final Activity act, final String productId, String serverId, final String userId, String roleId, String mobileTransId, final String adjustTrackToken, final double adjustTrackAmount, final GoogleIabCallback<GoogleIabResult> callback) {
+
+        //接口回调实例
+        GoogleIabCallback<GoogleIabResult> payCallback = new GoogleIabCallback<GoogleIabResult>() {
+            @Override
+            public void onSuccess(GoogleIabResult rst) {
+                //deal with the "success" here
+                //当前支付产品的ID(和调用支付接口时传入的产品ID一致)
+                String mSku = rst.getSku();
+
+            }
+
+            @Override
+            public void onCancel() {
+
+                //deal with the "cancel" here,user quit paying
+            }
+
+            @Override
+            public void onError(GoogleIabError googleIabError) {
+
+                //deal with the "error" here,errors occur when doing payment
+            }
+        };
+
+
+        /**
+         * act : Android Activity实例 （必须）
+         *         googleProductId : Google Play Developer Console上定义的产品ID （必须， 联系R2 SDK开发人员）
+         *         serverId : 当前玩家所处服务器唯一标示（必须）
+         *         userId :当前玩家的R2 UID （必须）
+         *         roleId : 当前玩家角色唯一标示（必须）
+         *         mobileTrans：研发方可定义的额外数据 （最终SDK服务器会透传给研发方）（必须）
+         *         adjustTrackToken: Google Iab支付产品对应的Adjust追踪token值 （可选， 联系R2 SDK开发人员）
+         *         adjustTrackAmount: Google Iab 支付产品对应的Adjust追踪的金额（可选， 联系R2 SDK开发人员）
+         *         callback： 接口回调，研发需传入实现了该接口的实例 （必须）
+         */
+
+        //接口需要的数据
+        String product_id = "lxtest123";
+        String serverId ="s1";
+        String userId ="56";
+        String roleId ="bigus";
+        String mobileTrans = "mobileTrans";
+        String adjustTrackToken = "ofe#1x";
+        double adjustTrackAmount = 99.0D;
+        //接口调用
+
+        R2GoogleIabApi.doIabPayExternalTrack(activity,product_id, serverId, userId,roleId, mobileTrans,adjustTrackToken,adjustTrackAmount,payCallback);
+
+
+    }
+
 }
+
+
